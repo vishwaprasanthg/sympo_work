@@ -4,10 +4,19 @@ const mongoose = require("mongoose");
 const app = express();
 
 // conenction to mongodb
-mongoose.connect("mongodb://localhost/todo_express", {
+const mongoDBURL =
+  'mongodb+srv://crazykillerr2006:SzBsgjeZQuTBTvoh@cluster0.vgkww.mongodb.net/todo-app?retryWrites=true&w=majority&appName=Cluster0';
+
+mongoose.connect(mongoDBURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+})
+  .then(() => {
+    console.log("Connected to MongoDB successfully!");
+  })
+  .catch((err) => {
+    console.error("Error connecting to MongoDB:", err.message);
+  });
 
 
 // middlewares
